@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+<!---
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rotationX="42"
+        android:rotationY="-48"
+        android:text="Hello World!"
+        android:textColor="#9AE431"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.384" />
+-->
+
+    <Button
+        android:id="@+id/mainInfoOwnBtn"
+        android:layout_width="182dp"
+        android:layout_height="wrap_content"
+        android:text="Інформація про автора"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.978" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="365dp"
+        android:layout_height="84dp"
+        android:gravity="center"
+        android:text='Чисельне обчислення інтегралу'
+        android:textColor="#CA2CCF"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.085" />
+
+    <Button
+        android:id="@+id/mainInfoTaskBtn"
+        android:layout_width="182dp"
+        android:layout_height="wrap_content"
+        android:text='Інформація про додаток'
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.72" />
+
+    <Button
+        android:id="@+id/startProgram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Запуск програми"
+        app:layout_constraintBottom_toTopOf="@+id/mainInfoTaskBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.629" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
