@@ -2,23 +2,17 @@ package com.example.lab1
 
 import android.content.Context
 import android.content.Intent
-import android.icu.number.IntegerWidth
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.os.Environment
-import android.util.Log
 import android.view.View
 import android.widget.*
-import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.templete_function.*
-import java.io.File
-import java.io.FileOutputStream
-import java.io.ObjectOutputStream
-import java.io.PrintWriter
+import java.io.*
 import java.lang.Exception
+import java.lang.StringBuilder
+import java.time.Duration
 
 class FunctionActivity : AppCompatActivity() {
 
@@ -54,8 +48,6 @@ class FunctionActivity : AppCompatActivity() {
         goFindIntegral.isClickable = false;
         saveIntoFileBtn.isEnabled = false;
         saveIntoFileBtn.isClickable = false;
-        button2.isEnabled = false;
-        button2.isClickable = false;
 
         option = findViewById(R.id.spTypeFunc) as Spinner
         result = findViewById(R.id.typeResult) as TextView
@@ -121,12 +113,10 @@ class FunctionActivity : AppCompatActivity() {
                     goFindIntegral.isClickable = true;
                     saveIntoFileBtn.isEnabled = true;
                     saveIntoFileBtn.isClickable = true;
-                    button2.isEnabled = true;
-                    button2.isClickable = true;
+
                 }
             }
 
-            textView10.setText("$numA,$numB")
 
         }
 
@@ -187,28 +177,96 @@ class FunctionActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
         }*/
-            val sd_main = File(Environment.getExternalStorageState()+"")
-            Toast.makeText(this,sd_main.toString(),Toast.LENGTH_LONG).show()
-            var success = true
-            if(!sd_main.exists())
-                success = sd_main.mkdir()
-            if(success){
-                val sd =File("Filename.txt")
-                if(!sd.exists())
-                    success =sd.mkdir()
-                if(success){
-                    val dest = File(sd,"1qwer.txt")
-                    PrintWriter(dest).use { out -> println(numA) }
-                    try{
-                        PrintWriter(dest).use { out -> println(numA) }
-                    }catch (e:Exception){
 
+            }
+            saveIntoFileBtn.setOnClickListener{
+            val file = textFileName2.text.toString()
+            val data = "$functionType,$numA,$numB,$numC,$numD,$intervalA,$intervalB"
+
+            val fileOutputStream: FileOutputStream
+
+            if(file == null || file.trim() == ""){
+                showToast("Filename must be not empty!")
+            }
+             else{
+                try{
+                    fileOutputStream = openFileOutput(file, Context.MODE_PRIVATE)
+                    fileOutputStream.write(data.toByteArray())
+                }
+                catch(e: FileNotFoundException){
+                    e.printStackTrace()
+                }
+                catch (e:Exception){
+                    e.printStackTrace()
+                }
+                showToast("Saved to file"+getExternalFilesDir(file))
+            }
+                textFileName2.setText("")
+        }
+
+        readFileBtn.setOnClickListener{
+
+            val filename = textFileName.text.toString()
+            if(filename != null && filename.trim() != ""){
+                var fileInputStream: FileInputStream? = null
+                try{
+                    fileInputStream = openFileInput(filename)
+                    var inputStreamReader: InputStreamReader = InputStreamReader(fileInputStream)
+                    val bufferedReader: BufferedReader = BufferedReader(inputStreamReader)
+
+                    val stringBuilder: StringBuilder = StringBuilder()
+                    var text: String? = null
+                    while({text = bufferedReader.readLine(); text}() != null){
+                        stringBuilder.append(text)
+                    }
+                    val listParam = stringBuilder.split(",")
+                    if(listParam.size == 7){
+                        if(listParam[0].toInt() == 0 || listParam[0].toInt() == 1){
+                            result.text = options.get(listParam[0].toInt())
+                            editNumA.setText(listParam[1])
+                            editNumB.setText(listParam[2])
+                            editNumC.setText(listParam[3])
+                            editNumD.setText(listParam[4])
+                            editIntA.setText(listParam[5])
+                            editIntB.setText(listParam[6])
+                        }
+                        else{
+                            showToast("Incorrect format of file! ")
+                        }
+                    }
+                    else{
+                        showToast("Incorrect format of file! ")
                     }
                 }
+                catch(e: Exception){
+                    showToast("Haven`t such file in system! ")
+                }
+
             }
+            else{
+                showToast("Filename must be not empty!")
+            }
+            textFileName.setText("")
         }
 
     }
+    fun Context.showToast (text:CharSequence, duration: Int = Toast.LENGTH_SHORT){
+            Toast.makeText(this, text, duration).show()
+    }
 
+    override fun onResume() {
+        super.onResume()
 
+        goFindIntegral.isEnabled = false;
+        goFindIntegral.isClickable = false;
+        saveIntoFileBtn.isEnabled = false;
+        saveIntoFileBtn.isClickable = false;
+
+        editNumA.setText("")
+        editNumB.setText("")
+        editNumC.setText("")
+        editNumD.setText("")
+        textFileName.setText("")
+        textFileName2.setText("")
+    }
 }

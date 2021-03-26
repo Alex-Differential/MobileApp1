@@ -259,13 +259,28 @@
 
     <Button
         android:id="@+id/graphBtn"
-        android:layout_width="104dp"
+        android:layout_width="105dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="16dp"
         android:text="Графік функції"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.915"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/timeSimpsonText"
-        app:layout_constraintVertical_bias="0.567" />
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/prevIntBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="185dp"
+        android:layout_marginBottom="16dp"
+        android:text="Назад "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/graphBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView28"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

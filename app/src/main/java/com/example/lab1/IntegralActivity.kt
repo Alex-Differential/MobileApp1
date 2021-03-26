@@ -9,6 +9,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_integral.*
 import kotlinx.android.synthetic.main.templete_function.*
 import java.math.BigDecimal
+import kotlin.math.ln
 import kotlin.math.pow
 import kotlin.math.sin
 
@@ -79,6 +80,11 @@ class IntegralActivity : AppCompatActivity() {
             intent.putExtra("intB", intervalB)
             startActivity(intent)
         }
+
+        prevIntBtn.setOnClickListener{
+            val intent = Intent(this, FunctionActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     fun MidpointRule(a:Double, b: Double, NumA:Double, NumB:Double, NumC:Double, NumD:Double): Double {
@@ -86,7 +92,13 @@ class IntegralActivity : AppCompatActivity() {
         var sum = 0.0
         for (i in 0 until n) {
             val x = a + i * h
-            sum += Func1(x + h / 2.0, NumA, NumB, NumC, NumD)
+            if(functionType == 0){
+                sum += Func1(x + h / 2.0, NumA, NumB, NumC, NumD)
+            }
+            if(functionType == 1){
+                sum += Func2(x + h / 2.0, NumA, NumB, NumC, NumD)
+            }
+
         }
         return h*sum
     }
@@ -96,7 +108,13 @@ class IntegralActivity : AppCompatActivity() {
         var sum = 0.0
         for (i in 0 until n) {
             val x = a + i * h
-            sum += (Func1(x , NumA, NumB, NumC, NumD) + Func1(x + h , NumA, NumB, NumC, NumD))/2.0
+            if(functionType == 0){
+                sum += (Func1(x , NumA, NumB, NumC, NumD) + Func1(x + h , NumA, NumB, NumC, NumD))/2.0
+            }
+            if(functionType == 1){
+                sum += (Func2(x , NumA, NumB, NumC, NumD) + Func2(x + h , NumA, NumB, NumC, NumD))/2.0
+            }
+
             /*sum[1] += (f(x) + f(x + h)) / 2.0
             sum[2] += (f(x) + 4.0 * f(x + h / 2.0) + f(x + h)) / 6.0*/
         }
@@ -108,9 +126,13 @@ class IntegralActivity : AppCompatActivity() {
         var sum = 0.0
         for (i in 0 until n) {
             val x = a + i * h
-            //sum += (Func1(x , NumA, NumB, NumC, NumD) + Func1(x + h , NumA, NumB, NumC, NumD))/2.0
-            //sum += (f(x) + f(x + h)) / 2.0
-            sum += (Func1(x , NumA, NumB, NumC, NumD) + 4.0 * Func1(x + h/2.0 , NumA, NumB, NumC, NumD) + Func1(x + h, NumA, NumB, NumC, NumD)) / 6.0
+            if(functionType == 0){
+                sum += (Func1(x , NumA, NumB, NumC, NumD) + 4.0 * Func1(x + h/2.0 , NumA, NumB, NumC, NumD) + Func1(x + h, NumA, NumB, NumC, NumD)) / 6.0
+            }
+            if(functionType == 1){
+                sum += (Func2(x , NumA, NumB, NumC, NumD) + 4.0 * Func2(x + h/2.0 , NumA, NumB, NumC, NumD) + Func2(x + h, NumA, NumB, NumC, NumD)) / 6.0
+            }
+
         }
         return h*sum
     }
@@ -119,7 +141,9 @@ class IntegralActivity : AppCompatActivity() {
         return a*x.pow(3)+b*sin(c*x)*x.pow(2) + d*x
     }
 
-
+    fun Func2(x:Double, a:Double, b:Double, c:Double, d: Double):Double{
+        return a*b.pow(c*x)*ln(x.pow(2)+1).pow(d)
+    }
 
 }
 

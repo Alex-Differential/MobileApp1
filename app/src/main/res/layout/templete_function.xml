@@ -6,27 +6,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="349dp"
-        android:layout_height="24dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="39dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="570dp"
         android:text="Оберіть вид функції із запропонованих"
         android:textColor="#A600FF"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.313" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Spinner
         android:id="@+id/spTypeFunc"
@@ -49,7 +50,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="504dp"
         android:gravity="center"
         android:rotationX="0"
@@ -64,13 +65,14 @@
         android:layout_width="79dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="443dp"
         android:layout_toStartOf="@+id/typeResult"
         android:text="Функція:"
         android:textColor="#000000"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/typeResult"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +91,7 @@
         android:layout_width="46dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="59dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="48dp"
         android:layout_marginBottom="349dp"
         android:hint="A"
         android:inputType="number|numberSigned|numberDecimal"
@@ -103,7 +105,7 @@
         android:layout_width="46dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="48dp"
         android:layout_marginBottom="349dp"
         android:hint="B"
         android:inputType="number|numberSigned|numberDecimal"
@@ -117,7 +119,7 @@
         android:layout_width="46dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="48dp"
         android:layout_marginBottom="349dp"
         android:hint="C"
         android:inputType="number|numberSigned|numberDecimal"
@@ -131,7 +133,7 @@
         android:layout_width="46dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="66dp"
         android:layout_marginBottom="349dp"
         android:hint="D"
@@ -146,9 +148,11 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:text="Інтервал: "
         android:textColor="#000000"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numA"
@@ -159,11 +163,14 @@
         android:layout_width="46dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginEnd="37dp"
         android:hint="a"
         android:inputType="number|numberSigned|numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/intervalB"
         app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/numB"
+        app:layout_constraintVertical_bias="0.148" />
 
     <EditText
         android:id="@+id/intervalB"
@@ -174,52 +181,49 @@
         android:inputType="number|numberSigned|numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/intervalA"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/numB"
+        app:layout_constraintVertical_bias="0.148" />
 
     <Button
         android:id="@+id/saveNumBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="101dp"
+        android:layout_marginEnd="101dp"
         android:text="Зберегти"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.817"
-        app:layout_constraintStart_toEndOf="@+id/saveIntoFileBtn"
+        app:layout_constraintEnd_toStartOf="@+id/goFindIntegral"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numD"
-        app:layout_constraintVertical_bias="0.468" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:visibility="invisible"
-        tools:layout_editor_absoluteX="314dp"
-        tools:layout_editor_absoluteY="305dp" />
+        app:layout_constraintVertical_bias="0.385" />
 
     <Button
         android:id="@+id/saveIntoFileBtn"
         android:layout_width="113dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="56dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="8dp"
         android:text="Зберегти у файл"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/readFileBtn"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="0.294" />
+        app:layout_constraintTop_toBottomOf="@+id/textFileName2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/goFindIntegral"
         android:layout_width="136dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="48dp"
         android:text="Обчислити інтеграл"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveNumBtn"
-        app:layout_constraintVertical_bias="0.604" />
+        app:layout_constraintTop_toBottomOf="@+id/numC"
+        app:layout_constraintVertical_bias="0.362" />
 
     <TextView
         android:id="@+id/intervalInfo"
@@ -235,16 +239,45 @@
         app:layout_constraintTop_toBottomOf="@+id/intervalB" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/readFileBtn"
         android:layout_width="146dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginEnd="74dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="8dp"
         android:text="Зчитування з файлу"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/goFindIntegral"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveIntoFileBtn" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFileName"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/textFileName"
+        android:layout_width="115dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="72dp"
+        android:ems="10"
+        android:hint="exsample.txt"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toEndOf="@+id/textFileName2"
+        app:layout_constraintTop_toBottomOf="@+id/goFindIntegral"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/textFileName2"
+        android:layout_width="115dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="68dp"
+        android:ems="10"
+        android:hint="exsample.txt"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
